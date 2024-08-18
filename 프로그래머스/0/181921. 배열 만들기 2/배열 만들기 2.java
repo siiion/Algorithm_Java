@@ -4,7 +4,6 @@ class Solution {
     public int[] solution(int l, int r) {
         List<Integer> arrList = new ArrayList<>();
         boolean isCorrect = false;
-        boolean isContained = false;
         for (int i = l; i <= r; i++) {
             String s = Integer.toString(i);
             for (int j = 0; j < s.length(); j++) {
@@ -19,7 +18,6 @@ class Solution {
             if (isCorrect) {
                 int num = Integer.parseInt(s);
                 arrList.add(num);
-                isContained = true;
             }
         }
         if (arrList.size() == 0) {
