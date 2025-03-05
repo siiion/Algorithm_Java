@@ -1,15 +1,17 @@
-import java.util.*;
-
 class Solution {
     public int solution(int n) {
         int answer = 0;
-        if (n % 2 == 0) {
+        if (n % 2 != 0) {
             for (int i = 1; i <= n; i++) {
-                if (i % 2 == 0) answer += Math.pow(i, 2);
+                if (i % 2 != 0) {
+                    answer += i;
+                }
             }
         } else {
             for (int i = 1; i <= n; i++) {
-                if (i % 2 != 0) answer += i;
+                if (i % 2 == 0) {
+                    answer += i*i;
+                }
             }
         }
         return answer;
