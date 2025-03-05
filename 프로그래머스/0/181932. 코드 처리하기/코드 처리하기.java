@@ -1,26 +1,26 @@
 class Solution {
     public String solution(String code) {
-        String ret = "";
+        String answer = "";
         int mode = 0;
-        char[] codeArr = code.toCharArray();
-        for (int idx = 0; idx <= codeArr.length - 1; idx ++) {
-            if (mode == 0) {
-                if (codeArr[idx] != '1' && idx % 2 == 0) {
-                    ret += codeArr[idx];
-                } else if (codeArr[idx] == '1') {
-                    mode = 1;
+        for (int i = 0; i < code.length(); i++) {
+            if (code.charAt(i) == '1') {
+                mode = mode == 1 ? 0 : 1;
+            } else {
+                if (mode == 1) {
+                if (i % 2 != 0) {
+                    answer += code.charAt(i);
                 }
             } else {
-                if (codeArr[idx] != '1' && idx % 2 != 0) {
-                    ret += codeArr[idx];
-                } else if (codeArr[idx] == '1') {
-                    mode = 0;
+                if (i % 2 == 0) {
+                    answer += code.charAt(i);
                 }
             }
+            }
         }
-        if (ret.equals("")) {
-            ret = "EMPTY";
+        
+        if (answer.equals("")) {
+            answer = "EMPTY";
         }
-        return ret;
+        return answer;
     }
 }
