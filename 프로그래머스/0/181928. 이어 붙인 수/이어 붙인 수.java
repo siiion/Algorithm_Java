@@ -1,16 +1,14 @@
-import java.util.*;
-
 class Solution {
     public int solution(int[] num_list) {
-        String odd = "";
-        String even = "";
-        for (int i : num_list) {
-            if (i % 2 == 0) {
-                even += i + "";
+        int evenList = 0;
+        int oddList = 0;
+        for (int n : num_list) {
+            if (n % 2 == 0) {
+                evenList = Integer.parseInt("" + evenList + n);
             } else {
-                odd += i + "";
+                oddList = Integer.parseInt("" + oddList + n);
             }
         }
-        return Integer.parseInt(odd) + Integer.parseInt(even);
+        return evenList + oddList;
     }
 }
