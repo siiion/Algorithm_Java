@@ -1,12 +1,12 @@
 class Solution {
     public int solution(int n, String control) {
-        for (int i = 0; i < control.length(); i++) {
-            switch (control.charAt(i)) {
+        for (char c : control.toCharArray()) {
+            switch (c) {
                 case 'w':
-                    n += 1;
+                    n++;
                     break;
                 case 's':
-                    n -= 1;
+                    n--;
                     break;
                 case 'd':
                     n += 10;
@@ -14,6 +14,7 @@ class Solution {
                 case 'a':
                     n -= 10;
                     break;
+                    
             }
         }
         return n;
