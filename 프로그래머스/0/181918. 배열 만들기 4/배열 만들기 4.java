@@ -2,23 +2,19 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] arr) {
-        ArrayList<Integer> arrList = new ArrayList<>();
+        List<Integer> stk = new ArrayList<>();
         int i = 0;
+        
         while (i < arr.length) {
-            if (arrList.size() == 0) {
-                arrList.add(arr[i]);
-                i += 1;
-            } else if (arrList.get(arrList.size() - 1) < arr[i]) {
-                arrList.add(arr[i]);
-                i += 1;
+            if (stk.size() == 0 || stk.get(stk.size()-1) < arr[i]) {
+                stk.add(arr[i]);
+                i++;
             } else {
-                arrList.remove(arrList.size() - 1);
+                stk.remove(stk.size()-1);
             }
         }
-        int[] stk = new int[arrList.size()];
-        for (int j = 0; j < stk.length; j++) {
-            stk[j] = arrList.get(j);
-        }
-        return stk;
+        
+        int[] answer = stk.stream().mapToInt(j->j).toArray();
+        return answer;
     }
 }
