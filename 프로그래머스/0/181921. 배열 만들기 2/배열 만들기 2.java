@@ -2,33 +2,27 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int l, int r) {
-        List<Integer> arrList = new ArrayList<>();
-        boolean isCorrect = false;
+        List<Integer> list = new ArrayList<>();
+        boolean flag = true;
+        
         for (int i = l; i <= r; i++) {
-            String s = Integer.toString(i);
-            for (int j = 0; j < s.length(); j++) {
-                if (s.charAt(j) == '0' || s.charAt(j) == '5') {
-                    isCorrect = true;
-                    continue;
-                } else {
-                    isCorrect = false;
-                    break;
+            String s = i + "";
+            for (char c : s.toCharArray()) {
+                if (c != '0' && c != '5') {
+                    flag = false;
                 }
             }
-            if (isCorrect) {
-                int num = Integer.parseInt(s);
-                arrList.add(num);
+            if (flag) {
+                list.add(i);
             }
+            flag = true;
         }
-        if (arrList.size() == 0) {
-            int[] answer = {-1};
-            return answer;
-        } else {
-            int[] answer = new int[arrList.size()];
-            for (int i = 0; i < answer.length; i++) {
-                answer[i] = arrList.get(i);
-            }
-            return answer;
+        
+        int[] answer = list.stream().mapToInt(i->i).toArray();
+        int[] empty = {-1};
+        if (answer.length == 0) {
+            answer = empty;
         }
+        return answer;
     }
 }
