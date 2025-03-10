@@ -1,12 +1,9 @@
 class Solution {
     public int solution(String number) {
         int sum = 0;
-        String[] num = number.split("");
-        
-        for (int i = 0; i < num.length; i++) {
-            sum += Integer.parseInt(num[i]);
+        for (char c : number.toCharArray()) {
+            sum += c - '0';
         }
-        
         return sum % 9;
     }
 }
