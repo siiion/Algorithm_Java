@@ -1,18 +1,23 @@
-import java.util.ArrayList;
+import java.util.*;
 
 class Solution {
     public int[] solution(String[] intStrs, int k, int s, int l) {
-        ArrayList<Integer> arrList = new ArrayList<>();
+        List<Integer> arrList = new ArrayList<>();
         for (String str : intStrs) {
-            int num = Integer.parseInt(str.substring(s, s + l));
-            if (num > k) {
-                arrList.add(num);
+            char[] arr = str.toCharArray();
+            String part = "";
+            
+            for (int i = s; i < s + l; i++) {
+                part += arr[i];
+            }
+            
+            int partInt = Integer.parseInt(part);
+            if (partInt > k) {
+                arrList.add(partInt);
             }
         }
-        int[] answer = new int[arrList.size()];
-        for (int i = 0; i < arrList.size(); i++) {
-            answer[i] = arrList.get(i);
-        }
+        
+        int[] answer = arrList.stream().mapToInt(i->i).toArray();
         return answer;
     }
 }
