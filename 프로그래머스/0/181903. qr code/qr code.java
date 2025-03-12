@@ -4,7 +4,7 @@ class Solution {
         
         for (int i = 0; i < code.length(); i++) {
             if (i % q == r) {
-                answer += String.valueOf(code.charAt(i));
+                answer += code.charAt(i);
             }
         }
         
