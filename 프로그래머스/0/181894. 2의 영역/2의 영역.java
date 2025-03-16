@@ -1,39 +1,29 @@
-import java.util.ArrayList;
+import java.util.*;
 
 class Solution {
     public int[] solution(int[] arr) {
-        ArrayList<Integer> arrList = new ArrayList<>();
-        int first = -1;
-        int last = first;
+        int start = -1;
+        int end = -1;
         
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 2) {
-                first = i;
+                start = i;
                 break;
             }
         }
         
-        for (int i = arr.length - 1; i >= 0; i--) {
-            if (arr[i] == 2) {
-                last = i;
+        for (int j = arr.length - 1; j >= 0; j--) {
+            if (arr[j] == 2) {
+                end = j;
                 break;
             }
         }
         
-        if (first == -1) {
-            arrList.add(-1);
+        if (start == -1 && end == -1) {
+            int[] answer = {-1};
+            return answer;
         } else {
-            for (int i = first; i <= last; i++) {
-                arrList.add(arr[i]);
-            }
+            return Arrays.copyOfRange(arr, start, end + 1);
         }
-        
-        int[] answer = new int[arrList.size()];
-        
-        for (int i = 0; i < answer.length; i++) {
-            answer[i] = arrList.get(i);
-        }
-        
-        return answer;
     }
 }
