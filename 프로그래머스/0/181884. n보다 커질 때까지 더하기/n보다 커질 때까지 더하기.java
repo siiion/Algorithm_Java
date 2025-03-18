@@ -2,11 +2,11 @@ class Solution {
     public int solution(int[] numbers, int n) {
         int answer = 0;
         
-        for (int i : numbers) {
+        for (int i = 0; i < numbers.length; i++) {
             if (answer > n) {
                 break;
             } else {
-                answer += i;
+                answer += numbers[i];
             }
         }
         
