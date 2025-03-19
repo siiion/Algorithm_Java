@@ -1,26 +1,28 @@
+import java.util.*;
+
 class Solution {
     public int solution(int[] arr) {
-        int answer = 0;
+        int[] beforeArr = Arrays.copyOf(arr, arr.length);
         int count = 0;
-        int[] afterArr = new int[arr.length];
         
-        while (count != arr.length) {
-            count = 0;
-            
+        while (true) {
             for (int i = 0; i < arr.length; i++) {
                 if (arr[i] >= 50 && arr[i] % 2 == 0) {
-                    afterArr[i] = arr[i] / 2;
+                    arr[i] /= 2;
                 } else if (arr[i] < 50 && arr[i] % 2 != 0) {
-                    afterArr[i] = arr[i] * 2 + 1;
-                } else {
-                    count++;
+                    arr[i] = arr[i] * 2 + 1;
                 }
             }
             
-            arr = afterArr.clone();
-            answer++;
+            if (Arrays.equals(arr, beforeArr)) {
+                break;
+            }
+            
+            beforeArr = Arrays.copyOf(arr, arr.length);
+            
+            count++;
         }
         
-        return answer - 1;
+        return count;
     }
 }
