@@ -1,5 +1,7 @@
 class Solution {
     public String solution(String my_string, String alp) {
-        return my_string.replace(alp, alp.toUpperCase());
+        String answer = my_string.toLowerCase();
+        answer = my_string.replace(alp, alp.toUpperCase());
+        return answer;
     }
 }
