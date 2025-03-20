@@ -1,5 +1,11 @@
 class Solution {
     public String solution(String myString) {
-        return myString.toUpperCase();
+        String answer = "";
+        
+        for (char c : myString.toCharArray()) {
+            answer += Character.toUpperCase(c);
+        }
+        
+        return answer;
     }
 }
