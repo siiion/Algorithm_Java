@@ -1,16 +1,14 @@
 class Solution {
     public String solution(String myString) {
-        StringBuilder sb = new StringBuilder();
+        String answer = "";
         
-        for (int i = 0; i < myString.length(); i++) {
-            if (myString.substring(i, i + 1).equals("a") || myString.substring(i, i + 1).equals("A")) {
-                sb.append("A");
+        for (char c : myString.toCharArray()) {
+            if (c == 'a' || c == 'A') {
+                answer += 'A';
             } else {
-                sb.append(myString.substring(i, i + 1).toLowerCase());
+                answer += Character.toLowerCase(c);
             }
         }
-        
-        String answer = sb.toString();
         
         return answer;
     }
