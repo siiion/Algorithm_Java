@@ -2,10 +2,9 @@ class Solution {
     public String solution(String myString, String pat) {
         String answer = "";
         
-        for (int i = myString.length() - 1; i >= 0; i--) {
-            String subString = myString.substring(0, i + 1);
-            if (subString.endsWith(pat)) {
-                answer = subString;
+        for (int i = myString.length(); i >= 0; i--) {
+            if (myString.substring(0, i).endsWith(pat)) {
+                answer += myString.substring(0, i);
                 break;
             }
         }
