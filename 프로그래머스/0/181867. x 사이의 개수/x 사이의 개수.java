@@ -1,10 +1,23 @@
 class Solution {
     public int[] solution(String myString) {
-        String[] split_arr = myString.split("x", -1);
-        int[] answer = new int[split_arr.length];
+        String[] strArr = myString.split("x");
+        int answerLength = 0;
+        if (myString.endsWith("x")) {
+            answerLength = strArr.length + 1;
+        } else {
+            answerLength = strArr.length;
+        }
+        int[] answer = new int[answerLength];
         
-        for (int i = 0; i < answer.length; i++) {
-            answer[i] = split_arr[i].length();
+        if (strArr.length < answer.length) {
+            for (int i = 0; i < strArr.length; i++) {
+                answer[i] = strArr[i].length();
+            }
+            answer[answer.length -1] = 0;
+        } else {
+            for (int i = 0; i < answer.length; i++) {
+                answer[i] = strArr[i].length();
+            }
         }
         
         return answer;
