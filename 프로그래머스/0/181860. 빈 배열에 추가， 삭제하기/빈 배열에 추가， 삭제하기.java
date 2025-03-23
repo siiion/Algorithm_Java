@@ -1,8 +1,8 @@
-import java.util.ArrayList;
+import java.util.*;
 
 class Solution {
     public int[] solution(int[] arr, boolean[] flag) {
-        ArrayList<Integer> arrList = new ArrayList<>();
+        List<Integer> arrList = new ArrayList<>();
         
         for (int i = 0; i < flag.length; i++) {
             if (flag[i]) {
@@ -16,12 +16,6 @@ class Solution {
             }
         }
         
-        int[] answer = new int[arrList.size()];
-        
-        for (int i = 0; i < answer.length; i++) {
-            answer[i] = arrList.get(i);
-        }
-        
-        return answer;
+        return arrList.stream().mapToInt(i->i).toArray();
     }
 }
