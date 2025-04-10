@@ -1,19 +1,18 @@
 class Solution {
     public String solution(String rsp) {
         String answer = "";
-        String[] array = rsp.split("");
-        for (int i = 0; i < array.length; i++) {
-            switch (array[i]) {
-                case "2":
-                    answer += "0";
-                    break;
-                case "0":
-                    answer += "5";
-                    break;
-                default:
-                    answer += "2";
+        String[] arr = rsp.split("");
+        
+        for (String s : arr) {
+            if (s.equals("2")) {
+                answer += "0";
+            } else if (s.equals("0")) {
+                answer += "5";
+            } else {
+                answer += "2";
             }
         }
+        
         return answer;
     }
 }
