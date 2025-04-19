@@ -1,31 +1,26 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 class Solution {
     public int solution(int[] array) {
-        Map<Integer, Integer> freqMap = new HashMap<>();
+        int answer = 0;
+        Arrays.sort(array);
+        int max = array[array.length - 1];
+        int[] count = new int[max + 1];
         
-        for (int num : array) {
-            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
-        }
+        for (int i = 0; i < array.length; i++) {
+            count[array[i]]++;
+        } 
         
-        int maxFreq = 0;
-        int mode = -1;
-        boolean isDuplicated = false;
-        
-        for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
-            int number = entry.getKey();
-            int frequency = entry.getValue();
-            
-            if (frequency > maxFreq) {
-                maxFreq = frequency;
-                mode = number;
-                isDuplicated = false;
-            } else if (frequency == maxFreq) {
-                isDuplicated = true;
+        int maxCount = count[0];
+        for (int i = 1; i < count.length; i++) {
+            if (maxCount < count[i]) {
+                maxCount = count[i];
+                answer = i;
+            } else if (maxCount == count[i]) {
+                answer = -1;
             }
         }
         
-        return isDuplicated ? -1 : mode;
+        return answer;
     }
 }
