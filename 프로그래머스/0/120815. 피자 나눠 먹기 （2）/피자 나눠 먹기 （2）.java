@@ -3,7 +3,7 @@ class Solution {
         int answer = 0;
         while (true) {
             answer++;
-            if (answer * 6 % n == 0) {
+            if (6 * answer % n == 0) {
                 break;
             }
         }
