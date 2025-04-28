@@ -1,6 +1,7 @@
 class Solution {
     public String solution(String letter) {
         String answer = "";
+        
         String[] morse = { 
             ".-","-...","-.-.","-..",".","..-.",
             "--.","....","..",".---","-.-",".-..",
@@ -11,14 +12,14 @@ class Solution {
         
         String[] letterArr = letter.split(" ");
         
-        int ascii = 97;
-        for (String s : letterArr) {
+        for (String let : letterArr) {
             for (int i = 0; i < morse.length; i++) {
-                if (morse[i].equals(s)) {
-                    answer += (char)(ascii + i);
+                if (let.equals(morse[i])) {
+                    answer += (char)(97 + i);
                 }
             }
         }
+
         
         return answer;
     }
