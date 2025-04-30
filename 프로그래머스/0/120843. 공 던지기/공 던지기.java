@@ -1,18 +1,17 @@
 class Solution {
     public int solution(int[] numbers, int k) {
-        int answer = 0;
-        int index = 0;
+        int num = 1;
         
         for (int i = 1; i < k; i++) {
-            index += 2;
-            if (index == numbers.length) {
-                index = 0;
-            } else if (index > numbers.length) {
-                index = 1;
-            } 
-            answer = numbers[index];
+            if (num == numbers[numbers.length - 1]) {
+                num = 2;
+            } else if (num + 2 <= numbers[numbers.length - 1]) {
+                num += 2;
+            } else {
+                num = 1;
+            }
         }
         
-        return answer;
+        return num;
     }
 }
