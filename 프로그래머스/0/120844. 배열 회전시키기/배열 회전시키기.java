@@ -8,7 +8,7 @@ class Solution {
                 answer[i + 1] = numbers[i];
             }
         } else {
-            answer[answer.length - 1] = numbers[0];
+            answer[numbers.length - 1] = numbers[0];
             for (int i = 1; i < numbers.length; i++) {
                 answer[i - 1] = numbers[i];
             }
