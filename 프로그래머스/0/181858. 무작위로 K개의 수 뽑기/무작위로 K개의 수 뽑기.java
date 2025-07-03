@@ -2,21 +2,27 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] arr, int k) {
-        List<Integer> arrList = new ArrayList<>();
+        Set<Integer> seen = new HashSet<>();
+        List<Integer> result = new ArrayList<>();
         
-        for (int i = 0; i < arr.length; i++) {
-            if (arrList.size() == k) {
-                break;
+        for (int num : arr) {
+            if (!seen.contains(num)) {
+                seen.add(num);
+                result.add(num);
             }
-            if (!arrList.contains(arr[i])) {
-                arrList.add(arr[i]);
-            }
+            
+            if (result.size() == k) break;
         }
         
-        while (arrList.size() < k) {
-            arrList.add(-1);
+        while (result.size() < k) {
+            result.add(-1);
         }
         
-        return arrList.stream().mapToInt(i->i).toArray();
+        int[] answer = new int[k];
+        for (int i = 0; i < k; i++) {
+            answer[i] = result.get(i);
+        }
+        
+        return answer;
     }
 }
