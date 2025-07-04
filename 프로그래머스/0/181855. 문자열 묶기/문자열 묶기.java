@@ -1,18 +1,19 @@
+import java.util.*;
+
 class Solution {
     public int solution(String[] strArr) {
-        int answer = 0;
-        int[] countArr = new int[30];
+        Map<Integer, Integer> lengthCount = new HashMap<>();
         
-        for (int i = 0; i < strArr.length; i++) {
-            countArr[strArr[i].length() - 1]++;
+        for (String str : strArr) {
+            int len = str.length();
+            lengthCount.put(len, lengthCount.getOrDefault(len, 0) + 1);
         }
         
-        for (int j : countArr) {
-            if (j > answer) {
-                answer = j;
-            }
+        int max = 0;
+        for (int count : lengthCount.values()) {
+            max = Math.max(max, count);
         }
         
-        return answer;
+        return max;
     }
 }
