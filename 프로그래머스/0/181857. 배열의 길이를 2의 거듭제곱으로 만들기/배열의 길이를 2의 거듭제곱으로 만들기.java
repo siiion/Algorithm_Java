@@ -1,15 +1,22 @@
-import java.util.*;
-
 class Solution {
     public int[] solution(int[] arr) {
-        int length = 1;
+        int length = arr.length;
+        int max = 1;
         
-        while (length < arr.length) {
-            length *= 2;
+        while (true) {
+            if (max >= length) break;
+            
+            max *= 2;
         }
         
-        arr = Arrays.copyOf(arr, length);
+        int[] answer = new int[max];
+        for (int i = 0; i < arr.length; i++) {
+            answer[i] = arr[i];
+        }
+        for (int i = arr.length; i < max; i++) {
+            answer[i] = 0;
+        }
         
-        return arr;
+        return answer;
     }
 }
