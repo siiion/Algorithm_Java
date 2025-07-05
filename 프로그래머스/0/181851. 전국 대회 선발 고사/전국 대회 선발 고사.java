@@ -1,30 +1,26 @@
 import java.util.*;
 
-class Solution {
+public class Solution {
     public int solution(int[] rank, boolean[] attendance) {
-        int answer = 0;
-        int[] sort = new int[rank.length];
-        
+        List<int[]> students = new ArrayList<>();
         for (int i = 0; i < rank.length; i++) {
-            if (attendance[i]) {
-                sort[i] = rank[i];
-            } else {
-                rank[i] = Integer.MAX_VALUE;
-            }
+            students.add(new int[]{i, rank[i]});
         }
         
-        Arrays.sort(rank);
-        
-        for (int i = 0; i < sort.length; i++) {
-            if (rank[0] == sort[i]) {
-                answer += 10000 * i;
-            } else if (rank[1] == sort[i]) {
-                answer += 100 * i;
-            } else if (rank[2] == sort[i]) {
-                answer += i;
+        students.sort(Comparator.comparingInt(a -> a[1]));
+
+        List<Integer> selected = new ArrayList<>();
+        for (int[] student : students) {
+            int idx = student[0];
+            if (attendance[idx]) {
+                selected.add(idx);
+                if (selected.size() == 3) break;
             }
         }
-        
-        return answer;
+
+        int a = selected.get(0);
+        int b = selected.get(1);
+        int c = selected.get(2);
+        return 10000 * a + 100 * b + c;
     }
 }
