@@ -1,21 +1,14 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public String[] solution(String my_string) {
-        List<String> arrList = new ArrayList<>();
+        String[] answer = new String[my_string.length()];
         
         for (int i = 0; i < my_string.length(); i++) {
-            arrList.add(my_string.substring(i));
-        }
-        
-        String[] answer = new String[arrList.size()];
-        
-        for (int j = 0; j < answer.length; j++) {
-            answer[j] = arrList.get(j);
+            answer[i] = my_string.substring(i);
         }
         
         Arrays.sort(answer);
-        
         return answer;
     }
 }
