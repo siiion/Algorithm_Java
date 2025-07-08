@@ -1,15 +1,15 @@
-class Solution {
-    public String solution(String myString) {
-        String answer = "";
-        
-        for (char c : myString.toCharArray()) {
-            if (c < 'l') {
-                answer += "l";
-            } else {
-                answer += c;
-            }
-        }
-        
-        return answer;
-    }
+public class Solution {
+	public String solution(String myString) {
+		StringBuilder result = new StringBuilder();
+		
+		for (char c : myString.toCharArray()) {
+			if (c < 'l') {
+				result.append('l');
+			} else {
+				result.append(c);
+			}
+		}
+		
+		return result.toString();
+	}
 }
