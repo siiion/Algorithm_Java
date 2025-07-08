@@ -1,20 +1,22 @@
 import java.util.*;
 
-class Solution {
+public class Solution {
     public String[] solution(String[] picture, int k) {
-        List<String> arrList = new ArrayList<>();
-        
-        for (int i = 0; i < picture.length; i++) {
-            String[] strList = picture[i].split("");
-            String str = "";
-            for (int j = 0; j < strList.length; j++) {
-                str += strList[j].repeat(k);
+        List<String> enlarged = new ArrayList<>();
+
+        for (String row : picture) {
+            StringBuilder enlargedRow = new StringBuilder();
+            for (char ch : row.toCharArray()) {
+                for (int i = 0; i < k; i++) {
+                    enlargedRow.append(ch);
+                }
             }
-            for (int l = 0; l < k; l++) {
-                arrList.add(str);
+
+            for (int i = 0; i < k; i++) {
+                enlarged.add(enlargedRow.toString());
             }
         }
-        
-        return arrList.toArray(new String[arrList.size()]);
+
+        return enlarged.toArray(new String[0]);
     }
 }
