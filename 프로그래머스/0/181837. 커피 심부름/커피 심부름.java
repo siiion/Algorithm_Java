@@ -1,15 +1,15 @@
 class Solution {
     public int solution(String[] order) {
-        int answer = 0;
+        int sum = 0;
         
         for (String s : order) {
-            if (s.contains("latte")) {
-                answer += 5000;
+            if (s.contains("americano") || s.equals("anything")) {
+                sum += 4500;
             } else {
-                answer += 4500;
+                sum += 5000;
             }
         }
         
-        return answer;
+        return sum;
     }
 }
