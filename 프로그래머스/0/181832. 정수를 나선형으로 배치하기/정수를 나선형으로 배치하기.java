@@ -2,32 +2,24 @@ class Solution {
     public int[][] solution(int n) {
         int[][] answer = new int[n][n];
         
-        int num = 1;
-        int rowStart = 0;
-        int rowEnd = n - 1;
-        int colStart = 0;
-        int colEnd = n - 1;
+        int[] dx = {0, 1, 0, -1};
+        int[] dy = {1, 0, -1, 0};
         
-        while (num <= n * n) {
-            for (int i = colStart; i <= colEnd; i++) {
-                answer[rowStart][i] = num++;
-            }
-            rowStart++;
+        int x = 0, y = 0, dir = 0;
+        for (int i = 1; i <= n * n; i++) {
+            answer[x][y] = i;
             
-            for (int i = rowStart; i <= rowEnd; i++) {
-                answer[i][colEnd] = num++;
-            }
-            colEnd--;
+            int nx = x + dx[dir];
+            int ny = y + dy[dir];
             
-            for (int i = colEnd; i >= colStart; i--) {
-                answer[rowEnd][i] = num++;
+            if (nx < 0 || ny < 0 || nx >= n || ny >= n || answer[nx][ny] != 0) {
+                dir = (dir + 1) % 4;
+                nx = x + dx[dir];
+                ny = y + dy[dir];
             }
-            rowEnd--;
             
-            for (int i = rowEnd; i >= rowStart; i--) {
-                answer[i][colStart] = num++;
-            }
-            colStart++;
+            x = nx;
+            y = ny;
         }
         
         return answer;
